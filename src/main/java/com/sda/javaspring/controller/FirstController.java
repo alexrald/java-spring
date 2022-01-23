@@ -19,7 +19,22 @@ public class FirstController {
         log.info("firstPage() method called!");
 
         // looking for html page inside resources/templates
+        // Spring please use page: resources/templates/home-page.html
         return "home-page";
+    }
+
+    @GetMapping("/my-second-page")
+    public String secondPage() {
+        log.info("secondPage() called");
+
+        return "second-page";
+    }
+
+    @GetMapping("/my-third-page")
+    public String thirdPage() {
+        log.info("thirdPage() called");
+
+        return "pages/third-page";
     }
 
 }
