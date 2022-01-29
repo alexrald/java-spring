@@ -11,9 +11,29 @@
         <h2>Persons names</h2>
 
         <!-- for (Person person: persons) -->
-        <ul th:each="person: ${persons}">
-            <li th:text="${person.name()}">Anonymous</li>
-        </ul>
+        <!-- is implemented by using th:each -->
+
+<!--        <ul th:each="person: ${persons}">-->
+<!--            <li th:text="${person.name()}">Anonymous</li>-->
+<!--        </ul>-->
+
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+        </tr>
+
+        <tr th:each="person: ${persons}">
+            <td th:text="${person.name()}"></td>
+            <td th:text="${person.surname()}"></td>
+            <td th:text="${person.age()}"></td>
+
+        </tr>
+
+    </table>
+
 
     </body>
 </html>
