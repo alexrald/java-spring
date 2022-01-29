@@ -14,3 +14,5 @@
 - git status - show what's going on in the repository
 - git branch - show available branches on my machine
 - git branch -a - show available branches on my machine and remote ones (e.g. github)
+- git log - shows git history
+- git log --graph - shows git history as graph
