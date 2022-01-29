@@ -4,7 +4,8 @@
 - git commit message should be of good quality
 - in order to commit empty folder add .gitkeep file inside it
 - when changing branch, working tree should be clean
-
+- we should only edit the last commit and only if it's absolutely necessary
+- 
 ### Commands
 - git status - show what's going on in the repository
 - in order to commit empty folder add .gitkeep file inside it
