@@ -11,3 +11,5 @@
 
 ### Commands
 - git status - show what's going on in the repository
+- git log - shows git history
+- git log --graph - shows git history as graph
