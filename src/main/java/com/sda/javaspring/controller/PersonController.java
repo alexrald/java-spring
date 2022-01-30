@@ -34,4 +34,11 @@ public class PersonController {
 
         return "persons/persons-names";
     }
+
+    @GetMapping("/details")
+    public String showPersonsDetails(Model data) {
+
+        data.addAttribute(PERSONS_KEY, personService.getAllPersons());
+        return "persons/persons-table";
+    }
 }
