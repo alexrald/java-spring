@@ -3,6 +3,7 @@ package com.sda.javaspring.controller.rest;
 
 import com.sda.javaspring.entity.Person;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,5 +31,14 @@ public class FirstPersonRestController {
     public ResponseEntity<Person> customResponseEntity() {
         return new ResponseEntity<>(new Person("Johhn", "Doee", 20), HttpStatus.OK);
     }
+
+    @GetMapping("/with-headers")
+    public ResponseEntity<Person> customResponseEntityWithHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("name", "Albert");
+        return new ResponseEntity<>(new Person("Albert", "Einstein", 25), headers, HttpStatus.OK);
+    }
+
+
 
 }
