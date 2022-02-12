@@ -1,5 +1,7 @@
 package com.sda.javaspring.controller.rest;
 
+import com.sda.javaspring.entity.Child;
+import com.sda.javaspring.entity.Mother;
 import com.sda.javaspring.entity.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +35,11 @@ public class MyFirstRestController {
                 new Person("John", "Doe", 99),
                 new Person("Jane", "Roe", 33)
         };
+    }
+
+    @GetMapping("/mother")
+    public Mother motherAndChild() {
+        return new Mother("Alice", new Child("Bob", "male"));
     }
 
 }
