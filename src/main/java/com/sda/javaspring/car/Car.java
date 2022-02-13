@@ -4,18 +4,18 @@ public class Car {
     private final CarBody carBody;
     private final Engine engine;
 
-    private final Wheel wheel1;
-    private final Wheel wheel2;
-    private final Wheel wheel3;
-    private final Wheel wheel4;
+    private final Wheel wheelLF;    // Left Front
+    private final Wheel wheelRF;
+    private final Wheel wheelLB;
+    private final Wheel wheelRB;
 
-    public Car(CarBody carBody, Engine engine, Wheel wheel1, Wheel wheel2, Wheel wheel3, Wheel wheel4) {
+    public Car(CarBody carBody, Engine engine, Wheel wheelLF, Wheel wheelRF, Wheel wheelLB, Wheel wheelRB) {
         this.carBody = carBody;
         this.engine = engine;
-        this.wheel1 = wheel1;
-        this.wheel2 = wheel2;
-        this.wheel3 = wheel3;
-        this.wheel4 = wheel4;
+        this.wheelLF = wheelLF;
+        this.wheelRF = wheelRF;
+        this.wheelLB = wheelLB;
+        this.wheelRB = wheelRB;
     }
 
 
