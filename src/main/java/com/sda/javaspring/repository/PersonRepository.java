@@ -1,7 +1,11 @@
 package com.sda.javaspring.repository;
 
+import com.sda.javaspring.entity.PersonEntity;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PersonRepository {
+public interface PersonRepository extends CrudRepository<PersonEntity, Long> {
+
+
 }
