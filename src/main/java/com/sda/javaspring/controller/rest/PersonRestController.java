@@ -37,13 +37,18 @@ public class PersonRestController {
     public ResponseEntity<PersonEntity> findPersonEntityById(@PathVariable("id") Long personId) {
         log.info("trying to find person entity by id: [{}]", personId);
 
-        PersonEntity personEntity = personService.readPersonEntityById(personId);
+        var personEntity = personService.readOptPersonEntityById(personId);
 
-        if (personEntity == null)
-            //return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
-            return ResponseEntity.notFound().build();
+        return personEntity.map(personEntity1 -> ResponseEntity.ok(personEntity1))
+                .orElseGet(() -> ResponseEntity.notFound().build());
 
-        return ResponseEntity.ok(personEntity);
+//        PersonEntity personEntity = personService.readPersonEntityById(personId);
+//
+//        if (personEntity == null)
+//            //return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+//            return ResponseEntity.notFound().build();
+//
+//        return ResponseEntity.ok(personEntity);
         //return new ResponseEntity<>(personEntity, null, HttpStatus.OK);
     }
 }

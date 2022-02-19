@@ -38,4 +38,10 @@ public class RealPersonService {
         }
         return result;
     }
+
+    public Optional<PersonEntity> readOptPersonEntityById(Long id) {
+        log.info("read entity by id: [{}]", id);
+
+        return personRepository.findById(id);
+    }
 }
