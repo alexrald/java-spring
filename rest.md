@@ -31,6 +31,7 @@
   - PATCH method - for partial update
 
 - urls - good practice (playing with person)
+- use nouns for names of Your endpoints (not verbs)
 - we need to treat items like hierarchical collections
   - read
     - whole collections: /persons - with GET
