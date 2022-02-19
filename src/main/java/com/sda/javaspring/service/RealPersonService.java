@@ -4,6 +4,7 @@ import com.sda.javaspring.entity.PersonEntity;
 import com.sda.javaspring.repository.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,5 +44,16 @@ public class RealPersonService {
         log.info("read entity by id: [{}]", id);
 
         return personRepository.findById(id);
+    }
+
+    @Transactional
+    public boolean deletePersonEntityById(Long id) {
+        log.info("Deleting entity [{}]", id);
+
+        if (!personRepository.existsById(id))
+            return false;
+
+        personRepository.deleteById(id);
+        return true;
     }
 }
