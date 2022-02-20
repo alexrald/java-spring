@@ -61,14 +61,18 @@ public class PersonRestController {
     }
 
     @PostMapping("/persons")
-    public ResponseEntity<PersonEntity> createPersonEntity(@RequestBody PersonEntity personEntity) {
+    public ResponseEntity<?> createPersonEntity(@RequestBody PersonEntity personEntity) {
         log.info("received new person to save: [{}]", personEntity);
 
-        personEntity = personService.savePerson(personEntity);
+        boolean result = personService.savePerson(personEntity);
 
-        return ResponseEntity
-                .created(URI.create("/api/persons/%d".formatted(personEntity.getId())))
-                .body(personEntity);
+        if (result)
+            return ResponseEntity
+                    .created(URI.create("/api/persons/%d".formatted(personEntity.getId())))
+                    .body(personEntity);
+
+        else
+            return ResponseEntity.badRequest().body("Incorrect data or duplicate detected");
 
     }
 }

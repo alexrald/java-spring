@@ -58,18 +58,32 @@ public class RealPersonService {
     }
 
     @Transactional
-    public PersonEntity savePerson(PersonEntity personEntity) {
+    public boolean savePerson(PersonEntity personEntity) {
         log.info("entity for saving: [{}]", personEntity);
 
-        if (!personRepository.checkDuplicates(personEntity.getName(), personEntity.getSurname())) {
+        if (!personRepository.checkDuplicates(personEntity.getName(), personEntity.getSurname()) &&
+            checkEntityValidity(personEntity)) {
             personRepository.save(personEntity);
             log.info("entity after saving: [{}]", personEntity);
-        }
-        else
-        {
-            log.info("Duplicate item");
+            return true;
         }
 
-        return personEntity;
+        log.info("Duplicate item");
+        return false;
+    }
+
+    private static boolean checkEntityValidity(PersonEntity personEntity) {
+        boolean result = true;
+
+        if ( (personEntity.getName() == null) || (personEntity.getName().isBlank()) )
+            result = false;
+        else if ( (personEntity.getSurname() == null) || (personEntity.getSurname().isBlank()) )
+            result = false;
+        else if (personEntity.getAge() < 0)
+            return false;
+
+        log.info("entity: [{}], valid: [{}]", personEntity, result);
+
+        return result;
     }
 }
