@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -57,5 +58,17 @@ public class PersonRestController {
             return ResponseEntity.noContent().build();
 
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/persons")
+    public ResponseEntity<PersonEntity> createPersonEntity(@RequestBody PersonEntity personEntity) {
+        log.info("received new person to save: [{}]", personEntity);
+
+        personEntity = personService.savePerson(personEntity);
+
+        return ResponseEntity
+                .created(URI.create("/api/persons/%d".formatted(personEntity.getId())))
+                .body(personEntity);
+
     }
 }

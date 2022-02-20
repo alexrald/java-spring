@@ -56,4 +56,14 @@ public class RealPersonService {
         personRepository.deleteById(id);
         return true;
     }
+
+    public PersonEntity savePerson(PersonEntity personEntity) {
+        log.info("entity for saving: [{}]", personEntity);
+
+        personEntity = personRepository.save(personEntity);
+
+        log.info("entity after saving: [{}]", personEntity);
+
+        return personEntity;
+    }
 }
