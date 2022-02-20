@@ -57,12 +57,18 @@ public class RealPersonService {
         return true;
     }
 
+    @Transactional
     public PersonEntity savePerson(PersonEntity personEntity) {
         log.info("entity for saving: [{}]", personEntity);
 
-        personEntity = personRepository.save(personEntity);
-
-        log.info("entity after saving: [{}]", personEntity);
+        if (!personRepository.checkDuplicates(personEntity.getName(), personEntity.getSurname())) {
+            personRepository.save(personEntity);
+            log.info("entity after saving: [{}]", personEntity);
+        }
+        else
+        {
+            log.info("Duplicate item");
+        }
 
         return personEntity;
     }
